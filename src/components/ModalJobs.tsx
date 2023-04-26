@@ -2,7 +2,7 @@
 import React from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Cross2Icon, PlusCircledIcon } from '@radix-ui/react-icons'
-import { TJobs } from '@/types'
+import { TJobsRequest } from '@/types'
 
 const DialogButton = () => {
   const [isPending, setIsPending] = React.useState(false)
@@ -10,12 +10,13 @@ const DialogButton = () => {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
-    const data = Object.fromEntries(formData) as unknown as TJobs
+    const data = Object.fromEntries(formData) as unknown as TJobsRequest
     console.log(data)
     await fetch('https://jobsdevgo.up.railway.app/api/v1/create', {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify({ ...data, remote: !!data.remote }),
     })
+    console.log(data.remote)
     setIsPending(true)
   }
 
@@ -115,7 +116,7 @@ const DialogButton = () => {
                   name="remote"
                   placeholder="Título da vaga"
                 />
-                Presencial?
+                Remoto?
               </label>
               <div className="mt-[25px] flex justify-end">
                 <button

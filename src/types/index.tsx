@@ -12,6 +12,20 @@ export type TJobs = {
   Approved?: boolean
 }
 
+export type TJobsRequest = {
+  ID: number
+  title: string
+  description: string
+  role: string
+  company: string
+  location?: string
+  remote: boolean
+  experience?: string
+  salary?: string
+  link?: string
+  approved?: boolean
+}
+
 export type TJobsResponse = {
   data: TJobs[]
 }
