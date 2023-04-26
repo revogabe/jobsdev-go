@@ -1,10 +1,10 @@
-import { TJobsResponseUnique } from '@/types';
-import { BackpackIcon } from '@radix-ui/react-icons';
+import { TJobsResponseUnique } from '@/types'
+import { BackpackIcon } from '@radix-ui/react-icons'
 
 interface PageProps {
   params: {
-    id: string;
-  };
+    id: string
+  }
 }
 
 export default async function WorkPage({ params }: PageProps) {
@@ -15,10 +15,10 @@ export default async function WorkPage({ params }: PageProps) {
       next: {
         revalidate: 60,
       },
-    }
-  );
+    },
+  )
 
-  const { data } = (await response.json()) as TJobsResponseUnique;
+  const { data } = (await response.json()) as TJobsResponseUnique
   const {
     Title,
     Description,
@@ -30,7 +30,7 @@ export default async function WorkPage({ params }: PageProps) {
     Link,
     Location,
     Approved,
-  } = data;
+  } = data
 
   return Approved ? (
     <main className="mx-auto min-h-screen w-full px-4 py-12">
@@ -57,7 +57,7 @@ export default async function WorkPage({ params }: PageProps) {
             Localidade: {Location}
           </p>
           <p className="flex cursor-default items-center justify-center gap-2 rounded-md bg-zinc-800 px-3 py-1 text-base text-zinc-300 duration-150 ease-out hover:bg-zinc-900 hover:text-emerald-400">
-            {Remote ? "Remote" : "Presencial"}
+            {Remote ? 'Remote' : 'Presencial'}
           </p>
           <p className="flex cursor-default items-center justify-center gap-2 rounded-md bg-zinc-800 px-3 py-1 text-base text-zinc-300 duration-150 ease-out hover:bg-zinc-900 hover:text-emerald-400">
             Experiência: {Experience}
@@ -75,5 +75,5 @@ export default async function WorkPage({ params }: PageProps) {
     <main className="flex min-h-screen w-full items-start justify-center pt-40">
       <h1 className="rounded-lg bg-zinc-900 px-8 py-4">Vaga não encontrada</h1>
     </main>
-  );
+  )
 }
