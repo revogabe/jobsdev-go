@@ -33,7 +33,7 @@ const DialogButton = () => {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="bg-zinc-950/75 data-[state=open]:animate-overlayShow fixed inset-0" />
-        <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-zinc-900 border border-zinc-800 p-[25px]  focus:outline-none overflow-hidden">
+        <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-zinc-900 border border-zinc-800 p-[25px]  focus:outline-none overflow-y-scroll">
           {isPending ? (
             <>
               <Dialog.Title className="text-zinc-200 font-bold m-0 text-[17px]">
