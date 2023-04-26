@@ -29,7 +29,6 @@ export default async function WorkPage({ params }: PageProps) {
     Location,
   } = data
 
-  console.log(data)
   return (
     <main className="min-h-screen w-full mx-auto px-4 pt-12">
       <div className="flex flex-col gap-8">
