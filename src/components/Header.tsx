@@ -1,8 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
-import { GitHubLogoIcon } from '@radix-ui/react-icons'
 import Link from 'next/link'
-import DialogButton from './ModalJobs'
+import { Menu } from './Menu'
 
 export const Header = () => {
   return (
@@ -25,18 +24,7 @@ export const Header = () => {
           </motion.span>
         </h1>
       </Link>
-      <div className="flex gap-3">
-        <a
-          className="flex font-bold active:scale-95 ease-out gap-2 items-center justify-center bg-zinc-900 py-3 px-5 hover:bg-zinc-800 duration-150 ease-out rounded-md text-base"
-          href="https://github.com/revogabe"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <GitHubLogoIcon width={20} height={20} />
-          Github
-        </a>
-        <DialogButton />
-      </div>
+      <Menu />
     </header>
   )
 }
