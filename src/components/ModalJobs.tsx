@@ -3,9 +3,11 @@ import React from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Cross2Icon, PlusCircledIcon } from '@radix-ui/react-icons'
 import { TJobsRequest } from '@/types'
+import { useMobile } from '@/hooks/useMobile'
 
 const DialogButton = () => {
   const [isPending, setIsPending] = React.useState(false)
+  const { isMobile } = useMobile()
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -16,7 +18,6 @@ const DialogButton = () => {
       method: 'POST',
       body: JSON.stringify({ ...data, remote: !!data.remote }),
     })
-    console.log(data.remote)
     setIsPending(true)
   }
 
@@ -28,7 +29,7 @@ const DialogButton = () => {
           rel="noreferrer"
         >
           <PlusCircledIcon width={20} height={20} />
-          Postar Vaga
+          {!isMobile && 'Postar Vaga'}
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
