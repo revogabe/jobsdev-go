@@ -17,7 +17,7 @@ export default async function Home() {
       <div className="flex w-full flex-col gap-4">
         <h1 className="text-2xl font-bold text-emerald-500">Pendentes</h1>
         <div className="grid w-full grid-cols-1 gap-4 lg:grid-cols-2">
-          {ListUnapproveds.map(
+          {ListUnapproveds.reverse().map(
             ({ ID, Title, Description, Role, Company, Remote }) => (
               <CardJobs
                 key={ID}
@@ -36,7 +36,7 @@ export default async function Home() {
       <div className="flex w-full flex-col gap-4">
         <h1 className="text-2xl font-bold text-emerald-500">Aprovados</h1>
         <div className="grid w-full grid-cols-1 gap-4 lg:grid-cols-2">
-          {ListApproveds.map(
+          {ListApproveds.reverse().map(
             ({ ID, Title, Description, Role, Company, Remote }) => (
               <CardJobs
                 key={ID}

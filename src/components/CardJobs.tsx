@@ -17,7 +17,7 @@ export const CardJobs = ({
 }: TJobs & OwnerProps) => {
   return (
     <Link
-      href={Owner ? `dashboard/work/${ID}` : `work/${ID}`}
+      href={Owner ? `/auth/dashboard/work/${ID}` : `work/${ID}`}
       className="group relative flex w-full flex-col gap-5 rounded-lg border border-zinc-800 bg-zinc-900 p-6 duration-200  ease-out hover:translate-y-[-6px] hover:bg-zinc-900/50"
     >
       <div className="max-sm: flex w-full flex-col gap-1">

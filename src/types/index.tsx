@@ -45,3 +45,17 @@ export type TJobsResponseUnique = {
     Approved?: boolean
   }
 }
+
+export type TAuthLogin = {
+  username: string
+  password: string
+}
+
+export type TAuthLoginResponse = {
+  data: {
+    id: string
+    username: string
+    role: string
+    token: string
+  }
+}
