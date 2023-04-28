@@ -30,43 +30,43 @@ export default async function WorkPage({ params }: PageProps) {
   } = data
 
   return (
-    <main className="min-h-screen w-full mx-auto px-4 pt-12">
+    <main className="mx-auto min-h-screen w-full px-4 pt-12">
       <div className="flex flex-col gap-8">
         <ButtonApply ID={ID} />
-        <div className="flex items-start lg:items-center justify-between gap-4 lg:flex-row flex-col">
-          <h1 className="md:text-5xl text-3xl font-bold">{Title}</h1>
+        <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:items-center">
+          <h1 className="text-3xl font-bold md:text-5xl">{Title}</h1>
           <div className="flex items-center justify-end gap-3">
-            <p className="flex gap-2 items-center justify-center bg-zinc-900 px-6 py-3 rounded-lg text-lg font-bold">
+            <p className="flex items-center justify-center gap-2 rounded-lg bg-zinc-900 px-6 py-3 text-lg font-bold">
               <BackpackIcon width={24} height={24} /> {Role}
             </p>
             <a
               href={Link}
-              className="flex gap-2 items-center justify-center bg-emerald-500 px-6 py-3 rounded-lg text-lg font-bold text-white hover:bg-emerald-800 hover:text-white duration-150 ease-out active:scale-95"
+              className="flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-lg font-bold text-white duration-150 ease-out hover:bg-emerald-800 hover:text-white active:scale-95"
             >
               Aplicar para Vaga
             </a>
           </div>
         </div>
-        <div className="flex gap-4 items-center justify-start">
-          <p className="cursor-default bg-zinc-800 flex items-center justify-center gap-2 hover:bg-zinc-900 ease-out duration-150 hover:text-emerald-400 px-3 py-1 text-zinc-300 text-base rounded-md">
+        <div className="flex items-center justify-start gap-4">
+          <p className="flex cursor-default items-center justify-center gap-2 rounded-md bg-zinc-800 px-3 py-1 text-base text-zinc-300 duration-150 ease-out hover:bg-zinc-900 hover:text-emerald-400">
             Empresa: {Company}
           </p>
-          <p className="cursor-default bg-zinc-800 flex items-center justify-center gap-2 hover:bg-zinc-900 ease-out duration-150 hover:text-emerald-400 px-3 py-1 text-zinc-300 text-base rounded-md">
+          <p className="flex cursor-default items-center justify-center gap-2 rounded-md bg-zinc-800 px-3 py-1 text-base text-zinc-300 duration-150 ease-out hover:bg-zinc-900 hover:text-emerald-400">
             Localidade: {Location}
           </p>
         </div>
       </div>
-      <div className="text-base w-full max-w-3xl mt-8">
+      <div className="mt-8 w-full max-w-3xl text-base">
         <p>{Description}</p>
       </div>
-      <div className="mt-8 flex md:flex-row flex-col gap-4 items-start md:items-center justify-start">
-        <p className="cursor-default bg-zinc-800 flex items-center justify-center gap-2 hover:bg-zinc-900 ease-out duration-150 hover:text-emerald-400 px-3 py-1 text-zinc-300 text-base rounded-md">
+      <div className="mt-8 flex flex-col items-start justify-start gap-4 md:flex-row md:items-center">
+        <p className="flex cursor-default items-center justify-center gap-2 rounded-md bg-zinc-800 px-3 py-1 text-base text-zinc-300 duration-150 ease-out hover:bg-zinc-900 hover:text-emerald-400">
           {Remote ? 'Remote' : 'Presencial'}
         </p>
-        <p className="cursor-default bg-zinc-800 flex items-center justify-center gap-2 hover:bg-zinc-900 ease-out duration-150 hover:text-emerald-400 px-3 py-1 text-zinc-300 text-base rounded-md">
+        <p className="flex cursor-default items-center justify-center gap-2 rounded-md bg-zinc-800 px-3 py-1 text-base text-zinc-300 duration-150 ease-out hover:bg-zinc-900 hover:text-emerald-400">
           Experiência: {Experience}
         </p>
-        <p className="cursor-default bg-zinc-800 flex items-center justify-center gap-2 hover:bg-zinc-900 ease-out duration-150 hover:text-emerald-400 px-3 py-1 text-zinc-300 text-base rounded-md">
+        <p className="flex cursor-default items-center justify-center gap-2 rounded-md bg-zinc-800 px-3 py-1 text-base text-zinc-300 duration-150 ease-out hover:bg-zinc-900 hover:text-emerald-400">
           Salário: {Salary}
         </p>
       </div>
