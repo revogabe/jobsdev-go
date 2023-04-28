@@ -39,20 +39,20 @@ export default async function WorkPage({ params }: PageProps) {
         <div className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:items-center">
           <h1 className="text-3xl font-bold md:text-5xl">{Title}</h1>
           <div className="flex items-center justify-end gap-3">
-            <p className="flex items-center justify-center gap-2 rounded-lg bg-zinc-900 px-6 py-3 text-lg font-bold">
+            <p className="flex items-center justify-center gap-2 truncate rounded-lg bg-zinc-900 px-6 py-3 text-lg font-bold">
               <BackpackIcon width={24} height={24} /> {Role}
             </p>
             <a
               href={Link}
               target="_blank"
-              className="flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-lg font-bold text-white duration-150 ease-out hover:bg-emerald-800 hover:text-white active:scale-95"
+              className="flex items-center justify-center gap-2 truncate rounded-lg bg-emerald-500 px-6 py-3 text-lg font-bold text-white duration-150 ease-out hover:bg-emerald-800 hover:text-white active:scale-95"
               rel="noreferrer"
             >
               Aplicar para Vaga
             </a>
           </div>
         </div>
-        <div className="grid items-center justify-start gap-4 max-sm:grid-cols-3 sm:flex">
+        <div className="items-center justify-start gap-4 max-sm:grid max-sm:grid-cols-3 sm:flex">
           <InfoLabel info={Company} />
           <InfoLabel info={Location} />
           <InfoLabel info={Remote ? 'Remote' : 'Presencial'} />
