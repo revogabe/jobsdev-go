@@ -5,9 +5,9 @@ import { Menu } from './Menu'
 
 export const Header = () => {
   return (
-    <header className="w-full py-6 px-4 flex items-center justify-between">
+    <header className="flex w-full items-center justify-between px-4 py-6">
       <Link href="/">
-        <h1 className="cursor-pointer relative text-4xl font-bold text-zinc-200">
+        <h1 className="relative cursor-pointer text-4xl font-bold text-zinc-200">
           JobsDev{' '}
           <motion.span
             initial={{ scale: 0, rotate: 90 }}
@@ -18,7 +18,7 @@ export const Header = () => {
               stiffness: 260,
               damping: 20,
             }}
-            className="absolute -top-1 -right-10 -rotate-12 font-extrabold text-white text-xl bg-emerald-500 py-2 px-2 rounded-md cursor-pointer"
+            className="absolute -right-10 -top-1 -rotate-12 cursor-pointer rounded-md bg-emerald-500 p-2 text-xl font-extrabold text-white"
           >
             GO
           </motion.span>

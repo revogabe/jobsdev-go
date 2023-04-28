@@ -8,7 +8,7 @@ export const Menu = () => {
     return (
       <div className="flex gap-3">
         <a
-          className="flex font-bold active:scale-95 gap-2 items-center justify-center bg-zinc-900 py-3 px-5 hover:bg-zinc-800 duration-150 ease-out rounded-md text-base"
+          className="flex items-center justify-center gap-2 rounded-md bg-zinc-900 px-5 py-3 text-base font-bold duration-150 ease-out hover:bg-zinc-800 active:scale-95"
           href="https://github.com/revogabe"
           target="_blank"
           rel="noreferrer"
@@ -23,7 +23,7 @@ export const Menu = () => {
   return (
     <div className="flex gap-3">
       <a
-        className="flex font-bold active:scale-95 gap-2 items-center justify-center bg-zinc-900 py-3 px-5 hover:bg-zinc-800 duration-150 ease-out rounded-md text-base"
+        className="flex items-center justify-center gap-2 rounded-md bg-zinc-900 px-5 py-3 text-base font-bold duration-150 ease-out hover:bg-zinc-800 active:scale-95"
         href="https://github.com/revogabe"
         target="_blank"
         rel="noreferrer"

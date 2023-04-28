@@ -25,7 +25,7 @@ const DialogButton = () => {
     <Dialog.Root onOpenChange={(open) => open === false && setIsPending(false)}>
       <Dialog.Trigger asChild>
         <button
-          className="flex font-bold active:scale-95  gap-2 items-center justify-center bg-zinc-900 py-3 px-5 hover:bg-emerald-500 ease-out duration-150  rounded-md text-base"
+          className="flex items-center justify-center  gap-2 rounded-md bg-zinc-900 px-5 py-3 text-base font-bold duration-150 ease-out  hover:bg-emerald-500 active:scale-95"
           rel="noreferrer"
         >
           <PlusCircledIcon width={20} height={20} />
@@ -33,23 +33,23 @@ const DialogButton = () => {
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="bg-zinc-950/75 data-[state=open]:animate-overlayShow fixed inset-0" />
-        <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-zinc-900 border border-zinc-800 p-[25px]  focus:outline-none overflow-y-scroll">
+        <Dialog.Overlay className="fixed inset-0 z-50 bg-zinc-950/75 data-[state=open]:animate-overlayShow" />
+        <Dialog.Content className="fixed left-[50%] top-[50%] z-50 max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] overflow-y-scroll rounded-[6px] border border-zinc-800 bg-zinc-900 p-[25px]  focus:outline-none data-[state=open]:animate-contentShow">
           {isPending ? (
             <>
-              <Dialog.Title className="text-zinc-200 font-bold m-0 text-[17px]">
+              <Dialog.Title className="m-0 text-[17px] font-bold text-zinc-200">
                 Sua vaga foi publicada!
               </Dialog.Title>
-              <Dialog.Description className="text-mauve11 mt-[4px] mb-5 text-[15px] leading-normal">
+              <Dialog.Description className="mb-5 mt-[4px] text-[15px] leading-normal text-zinc-200">
                 Sua vaga esta em análise logo será aprovada com sucesso!
               </Dialog.Description>
             </>
           ) : (
             <>
-              <Dialog.Title className="text-zinc-200 font-bold m-0 text-[17px]">
+              <Dialog.Title className="m-0 text-[17px] font-bold text-zinc-200">
                 Publique sua vaga!
               </Dialog.Title>
-              <Dialog.Description className="text-mauve11 mt-[4px] mb-5 text-[15px] leading-normal">
+              <Dialog.Description className="mb-5 mt-[4px] text-[15px] leading-normal text-zinc-200">
                 Descreva a vaga e publique agora mesmo!
               </Dialog.Description>
             </>
@@ -58,61 +58,61 @@ const DialogButton = () => {
           {!isPending && (
             <form onSubmit={handleSubmit} className="">
               <input
-                className="text-zinc-300 placeholder:text-zinc-600 shadow-zinc-950/50 bg-zinc-950/50 focus:shadow-emerald-400 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
+                className="inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
                 id="title"
                 name="title"
                 placeholder="Título da vaga"
               />
 
               <textarea
-                className="mt-3 p-3 text-zinc-300 placeholder:text-zinc-600 shadow-zinc-950/50 bg-zinc-950/50 focus:shadow-emerald-400 inline-flex h-[82px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
+                className="mt-3 inline-flex h-[82px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 p-3 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
                 id="description"
                 name="description"
                 placeholder="Description"
               />
               <input
-                className="mt-3 text-zinc-300 placeholder:text-zinc-600 shadow-zinc-950/50 bg-zinc-950/50 focus:shadow-emerald-400 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
+                className="mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
                 id="role"
                 name="role"
                 placeholder="Cargo"
               />
               <input
-                className="mt-3 text-zinc-300 placeholder:text-zinc-600 shadow-zinc-950/50 bg-zinc-950/50 focus:shadow-emerald-400 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
+                className="mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
                 id="company"
                 name="company"
                 placeholder="Empresa"
               />
               <input
-                className="mt-3 text-zinc-300 placeholder:text-zinc-600 shadow-zinc-950/50 bg-zinc-950/50 focus:shadow-emerald-400 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
+                className="mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
                 id="location"
                 name="location"
                 placeholder="Localização"
               />
               <input
-                className="mt-3 text-zinc-300 placeholder:text-zinc-600 shadow-zinc-950/50 bg-zinc-950/50 focus:shadow-emerald-400 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
+                className="mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
                 id="experience"
                 name="experience"
                 placeholder="Experiência necessária"
               />
               <input
-                className="mt-3 text-zinc-300 placeholder:text-zinc-600 shadow-zinc-950/50 bg-zinc-950/50 focus:shadow-emerald-400 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
+                className="mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
                 id="salary"
                 name="salary"
                 placeholder="Salário: (R$ 4.200)"
               />
               <input
-                className="mt-3 text-zinc-300 placeholder:text-zinc-600 shadow-zinc-950/50 bg-zinc-950/50 focus:shadow-emerald-400 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_1px] outline-none focus:shadow-[0_0_0_2px]"
+                className="mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
                 id="link"
                 name="link"
                 placeholder="Link da vaga"
               />
               <label
                 htmlFor=""
-                className="bg-zinc-950/50 rounded-md px-4 w-max py-2 mt-3 flex items-center justify-start gap-2 text-zinc-400"
+                className="mt-3 flex w-max items-center justify-start gap-2 rounded-md bg-zinc-950/50 px-4 py-2 text-zinc-400"
               >
                 <input
                   type="checkbox"
-                  className="checked:accent-emerald-400 w-4 h-4"
+                  className="h-4 w-4 checked:accent-emerald-400"
                   id="title"
                   name="remote"
                   placeholder="Título da vaga"
@@ -122,7 +122,7 @@ const DialogButton = () => {
               <div className="mt-[25px] flex justify-end">
                 <button
                   type="submit"
-                  className="bg-emerald-500 text-white hover:bg-emerald-800 duration-150 ease-out focus:shadow-green7 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] focus:outline-none"
+                  className="inline-flex h-[35px] items-center justify-center rounded-[4px] bg-emerald-500 px-[15px] font-medium leading-none text-white duration-150 ease-out hover:bg-emerald-800 focus:shadow-[0_0_0_2px] focus:shadow-emerald-500 focus:outline-none"
                 >
                   Publicar
                 </button>
@@ -131,7 +131,7 @@ const DialogButton = () => {
           )}
           <Dialog.Close asChild>
             <button
-              className="text-zinc-200 hover:bg-zinc-800 duration-150 ease-out focus:shadow-violet7 absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full focus:shadow-[0_0_0_2px] focus:outline-none"
+              className="absolute right-[10px] top-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full text-zinc-200 duration-150 ease-out hover:bg-zinc-800 focus:shadow-[0_0_0_2px] focus:shadow-zinc-200 focus:outline-none"
               aria-label="Close"
             >
               <Cross2Icon />

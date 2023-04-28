@@ -1,3 +1,4 @@
+import { InfoLabel } from '@/components/InfoLabel'
 import { TJobsResponseUnique } from '@/types'
 import { BackpackIcon } from '@radix-ui/react-icons'
 
@@ -43,31 +44,23 @@ export default async function WorkPage({ params }: PageProps) {
             </p>
             <a
               href={Link}
+              target="_blank"
               className="flex items-center justify-center gap-2 rounded-lg bg-emerald-500 px-6 py-3 text-lg font-bold text-white duration-150 ease-out hover:bg-emerald-800 hover:text-white active:scale-95"
+              rel="noreferrer"
             >
               Aplicar para Vaga
             </a>
           </div>
         </div>
-        <div className="flex items-center justify-start gap-4">
-          <p className="flex cursor-default items-center justify-center gap-2 rounded-md bg-zinc-800 px-3 py-1 text-base text-zinc-300 duration-150 ease-out hover:bg-zinc-900 hover:text-emerald-400">
-            Empresa: {Company}
-          </p>
-          <p className="flex cursor-default items-center justify-center gap-2 rounded-md bg-zinc-800 px-3 py-1 text-base text-zinc-300 duration-150 ease-out hover:bg-zinc-900 hover:text-emerald-400">
-            Localidade: {Location}
-          </p>
-          <p className="flex cursor-default items-center justify-center gap-2 rounded-md bg-zinc-800 px-3 py-1 text-base text-zinc-300 duration-150 ease-out hover:bg-zinc-900 hover:text-emerald-400">
-            {Remote ? 'Remote' : 'Presencial'}
-          </p>
-          <p className="flex cursor-default items-center justify-center gap-2 rounded-md bg-zinc-800 px-3 py-1 text-base text-zinc-300 duration-150 ease-out hover:bg-zinc-900 hover:text-emerald-400">
-            Experiência: {Experience}
-          </p>
-          <p className="flex cursor-default items-center justify-center gap-2 rounded-md bg-zinc-800 px-3 py-1 text-base text-zinc-300 duration-150 ease-out hover:bg-zinc-900 hover:text-emerald-400">
-            Salário: {Salary}
-          </p>
+        <div className="grid items-center justify-start gap-4 max-sm:grid-cols-3 sm:flex">
+          <InfoLabel info={Company} />
+          <InfoLabel info={Location} />
+          <InfoLabel info={Remote ? 'Remote' : 'Presencial'} />
+          <InfoLabel info={Experience} />
+          <InfoLabel info={Salary} />
         </div>
       </div>
-      <div className="mt-8 w-full max-w-3xl text-base">
+      <div className="mt-8 w-full max-w-3xl rounded-lg bg-zinc-900 p-6 text-base">
         <p className="whitespace-pre-line">{Description}</p>
       </div>
     </main>
