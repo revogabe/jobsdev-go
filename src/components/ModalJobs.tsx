@@ -2,22 +2,27 @@
 import React from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Cross2Icon, PlusCircledIcon } from '@radix-ui/react-icons'
-import { TJobsRequest } from '@/types'
+
+import { TJobsFormFields } from '@/types'
+
 import { useMobile } from '@/hooks/useMobile'
+import { useFormJobs } from '@/hooks/useFormJobs'
 
 const DialogButton = () => {
   const [isPending, setIsPending] = React.useState(false)
   const { isMobile } = useMobile()
+  const {
+    handleSubmit,
+    formState: { errors },
+    register,
+  } = useFormJobs()
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const formData = new FormData(event.currentTarget)
-    const data = Object.fromEntries(formData) as unknown as TJobsRequest
-    console.log(data)
+  async function handleCreateJob(data: TJobsFormFields) {
     await fetch('https://jobsdevgo.up.railway.app/api/v1/create', {
       method: 'POST',
       body: JSON.stringify({ ...data, remote: !!data.remote }),
     })
+
     setIsPending(true)
   }
 
@@ -47,74 +52,161 @@ const DialogButton = () => {
           ) : (
             <>
               <Dialog.Title className="mt-4 text-[17px] font-bold text-zinc-200">
-                Publique sua vaga!
+                Publique sua <span className="text-emerald-400">vaga</span>!
               </Dialog.Title>
-              <Dialog.Description className="mb-5 mt-[4px] text-[15px] leading-normal text-zinc-200">
-                Descreva a vaga e publique agora mesmo!
+              <Dialog.Description className="mb-5 mt-[4px] text-[15px] leading-normal text-zinc-500">
+                Descreva a vaga e a publique agora mesmo!
               </Dialog.Description>
             </>
           )}
 
           {!isPending && (
-            <form onSubmit={handleSubmit} className="">
-              <input
-                className="inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
-                id="title"
-                name="title"
-                placeholder="Título da vaga"
-              />
+            <form onSubmit={handleSubmit(handleCreateJob)} className="">
+              <fieldset>
+                <input
+                  className={`mb-2 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] ${
+                    errors.title?.message
+                      ? 'shadow-red-500 focus:shadow-red-700'
+                      : 'focus:shadow-emerald-400'
+                  }`}
+                  id="title"
+                  placeholder="Título da vaga"
+                  {...register('title')}
+                />
 
-              <textarea
-                className="mt-3 inline-flex h-[82px] w-full flex-1 resize-y items-center justify-center rounded-[4px] bg-zinc-950/50 p-3 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
-                id="description"
-                name="description"
-                placeholder="Descrição da vaga"
-              />
-              <input
-                className="mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
-                id="role"
-                name="role"
-                placeholder="Cargo"
-              />
-              <input
-                className="mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
-                id="company"
-                name="company"
-                placeholder="Empresa"
-              />
-              <input
-                className="mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
-                id="location"
-                name="location"
-                placeholder="Localização"
-              />
-              <input
-                className="mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
-                id="experience"
-                name="experience"
-                placeholder="Experiência necessária"
-              />
-              <input
-                className="mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
-                id="salary"
-                name="salary"
-                placeholder="Salário: (R$ 4.200)"
-              />
-              <input
-                className="mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
-                id="link"
-                name="link"
-                placeholder="Link da vaga"
-              />
-              <div className="mt-3 flex w-max items-center justify-start gap-2 rounded-md bg-zinc-950/50 px-4 py-2 text-zinc-400">
+                <strong className="text-sm font-normal text-red-500">
+                  {errors.title?.message}
+                </strong>
+              </fieldset>
+
+              <fieldset>
+                <textarea
+                  className={`mt-3 inline-flex h-[82px] w-full flex-1 resize-y items-center justify-center rounded-[4px] bg-zinc-950/50 p-3 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] ${
+                    errors.description?.message
+                      ? 'shadow-red-500 focus:shadow-red-700'
+                      : 'focus:shadow-emerald-400'
+                  }`}
+                  id="description"
+                  placeholder="Descrição da vaga"
+                  {...register('description')}
+                />
+
+                <strong className="text-sm font-normal text-red-500">
+                  {errors.description?.message}
+                </strong>
+              </fieldset>
+
+              <fieldset>
+                <input
+                  className={`mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] ${
+                    errors.role?.message
+                      ? 'shadow-red-500 focus:shadow-red-700'
+                      : 'focus:shadow-emerald-400'
+                  }`}
+                  id="role"
+                  placeholder="Cargo"
+                  {...register('role')}
+                />
+                <strong className="text-sm font-normal text-red-500">
+                  {errors.role?.message}
+                </strong>
+              </fieldset>
+
+              <fieldset>
+                <input
+                  className={`mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] ${
+                    errors.company?.message
+                      ? 'shadow-red-500 focus:shadow-red-700'
+                      : 'focus:shadow-emerald-400'
+                  }`}
+                  id="company"
+                  placeholder="Empresa"
+                  {...register('company')}
+                />
+
+                <strong className="text-sm font-normal text-red-500">
+                  {errors.company?.message}
+                </strong>
+              </fieldset>
+
+              <fieldset>
+                <input
+                  className={`mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] ${
+                    errors.location?.message
+                      ? 'shadow-red-500 focus:shadow-red-700'
+                      : 'focus:shadow-emerald-400'
+                  }`}
+                  id="location"
+                  placeholder="Localização"
+                  {...register('location')}
+                />
+
+                <strong className="text-sm font-normal text-red-500">
+                  {errors.location?.message}
+                </strong>
+              </fieldset>
+
+              <fieldset>
+                <input
+                  className={`mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] ${
+                    errors.experience?.message
+                      ? 'shadow-red-500 focus:shadow-red-700'
+                      : 'focus:shadow-emerald-400'
+                  }`}
+                  id="experience"
+                  placeholder="Experiência necessária"
+                  {...register('experience')}
+                />
+
+                <strong className="text-sm font-normal text-red-500">
+                  {errors.experience?.message}
+                </strong>
+              </fieldset>
+
+              <fieldset>
+                <input
+                  className={`mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] ${
+                    errors.salary?.message
+                      ? 'shadow-red-500 focus:shadow-red-700'
+                      : 'focus:shadow-emerald-400'
+                  }`}
+                  id="salary"
+                  placeholder="Salário: (R$ 4.200)"
+                  {...register('salary')}
+                />
+
+                <strong className="text-sm font-normal text-red-500">
+                  {errors.salary?.message}
+                </strong>
+              </fieldset>
+
+              <fieldset>
+                <input
+                  className={`mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none transition-all duration-300 placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] ${
+                    errors.link?.message
+                      ? 'shadow-red-500 focus:shadow-red-700'
+                      : 'focus:shadow-emerald-400'
+                  }`}
+                  id="link"
+                  placeholder="Link da vaga"
+                  {...register('link')}
+                />
+
+                <strong className="text-sm font-normal text-red-500">
+                  {errors.link?.message}
+                </strong>
+              </fieldset>
+
+              <fieldset className="mt-3 flex w-max items-center justify-start gap-2 rounded-md bg-zinc-950/50 px-4 py-2 text-zinc-400">
                 <input
                   type="checkbox"
                   className="h-4 w-4 checked:accent-emerald-400"
                   id="remote"
-                  name="remote"
+                  {...register('remote')}
                 />
                 <label htmlFor="remote">Remoto?</label>
-              </div>
+              </fieldset>
+
               <div className="mt-[25px] flex justify-end">
                 <button
                   type="submit"

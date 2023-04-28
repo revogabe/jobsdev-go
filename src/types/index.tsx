@@ -12,6 +12,18 @@ export type TJobs = {
   Approved?: boolean
 }
 
+export type TJobsFormFields = {
+  title: string
+  description: string
+  role: string
+  company: string
+  location: string
+  experience: string
+  salary: string
+  link: string
+  remote: boolean
+}
+
 export type TJobsRequest = {
   ID: number
   title: string
