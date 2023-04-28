@@ -13,10 +13,10 @@ export default async function Home() {
   const ListApproveds = data.filter((job) => job.Approved)
 
   return (
-    <main className="flex min-h-screen flex-col gap-12 px-4 items-start justify-start py-4 container">
-      <div className="flex flex-col gap-4 w-full">
+    <main className="container flex min-h-screen flex-col items-start justify-start gap-12 p-4">
+      <div className="flex w-full flex-col gap-4">
         <h1 className="text-2xl font-bold text-emerald-500">Pendentes</h1>
-        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 w-full">
+        <div className="grid w-full grid-cols-1 gap-4 lg:grid-cols-2">
           {ListUnapproveds.map(
             ({ ID, Title, Description, Role, Company, Remote }) => (
               <CardJobs
@@ -33,9 +33,9 @@ export default async function Home() {
           )}
         </div>
       </div>
-      <div className="flex flex-col gap-4 w-full">
+      <div className="flex w-full flex-col gap-4">
         <h1 className="text-2xl font-bold text-emerald-500">Aprovados</h1>
-        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 w-full">
+        <div className="grid w-full grid-cols-1 gap-4 lg:grid-cols-2">
           {ListApproveds.map(
             ({ ID, Title, Description, Role, Company, Remote }) => (
               <CardJobs

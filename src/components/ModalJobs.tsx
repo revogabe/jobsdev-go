@@ -28,7 +28,7 @@ const DialogButton = () => {
           className="flex items-center justify-center  gap-2 rounded-md bg-zinc-900 px-5 py-3 text-base font-bold duration-150 ease-out  hover:bg-emerald-500 active:scale-95"
           rel="noreferrer"
         >
-          <PlusCircledIcon width={20} height={20} />
+          <PlusCircledIcon width={32} height={32} />
           {!isMobile && 'Postar Vaga'}
         </button>
       </Dialog.Trigger>
@@ -46,7 +46,7 @@ const DialogButton = () => {
             </>
           ) : (
             <>
-              <Dialog.Title className="m-0 text-[17px] font-bold text-zinc-200">
+              <Dialog.Title className="mt-4 text-[17px] font-bold text-zinc-200">
                 Publique sua vaga!
               </Dialog.Title>
               <Dialog.Description className="mb-5 mt-[4px] text-[15px] leading-normal text-zinc-200">
@@ -65,10 +65,10 @@ const DialogButton = () => {
               />
 
               <textarea
-                className="mt-3 inline-flex h-[82px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 p-3 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
+                className="mt-3 inline-flex h-[82px] w-full flex-1 resize-none items-center justify-center rounded-[4px] bg-zinc-950/50 p-3 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
                 id="description"
                 name="description"
-                placeholder="Description"
+                placeholder="Descrição da vaga"
               />
               <input
                 className="mt-3 inline-flex h-[42px] w-full flex-1 items-center justify-center rounded-[4px] bg-zinc-950/50 px-[10px] text-[15px] leading-none text-zinc-300 shadow-[0_0_0_1px] shadow-zinc-950/50 outline-none placeholder:text-zinc-600 focus:shadow-[0_0_0_2px] focus:shadow-emerald-400"
@@ -106,19 +106,15 @@ const DialogButton = () => {
                 name="link"
                 placeholder="Link da vaga"
               />
-              <label
-                htmlFor=""
-                className="mt-3 flex w-max items-center justify-start gap-2 rounded-md bg-zinc-950/50 px-4 py-2 text-zinc-400"
-              >
+              <div className="mt-3 flex w-max items-center justify-start gap-2 rounded-md bg-zinc-950/50 px-4 py-2 text-zinc-400">
                 <input
                   type="checkbox"
                   className="h-4 w-4 checked:accent-emerald-400"
-                  id="title"
+                  id="remote"
                   name="remote"
-                  placeholder="Título da vaga"
                 />
-                Remoto?
-              </label>
+                <label htmlFor="remote">Remoto?</label>
+              </div>
               <div className="mt-[25px] flex justify-end">
                 <button
                   type="submit"
@@ -134,7 +130,7 @@ const DialogButton = () => {
               className="absolute right-[10px] top-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full text-zinc-200 duration-150 ease-out hover:bg-zinc-800 focus:shadow-[0_0_0_2px] focus:shadow-zinc-200 focus:outline-none"
               aria-label="Close"
             >
-              <Cross2Icon />
+              <Cross2Icon width={25} height={25} />
             </button>
           </Dialog.Close>
         </Dialog.Content>
